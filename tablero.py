@@ -6,7 +6,7 @@ from colorama import init, Fore, Style
 init(autoreset=True)
 
 # Declavo algunas variables utiles
-ESPACIO_VACIO = 0
+ESPACIO_VACIO = " "
 VIOLETA = "x"
 AZUL = "o"
 JUGADOR_1 = 1
@@ -16,11 +16,17 @@ CONECTA = 4
 
 class tablero_del_juego():
     def __init__(self):
-        self.tablero = []
+        self.filas = 8
+        self.columnas = 8
 
     #defino el tamaño de la matriz
-    def crear_tablero(self):
-        self.tablero = [[0 for columna in range(9)] for fila in range(8)]
+    def crear_tablero(filas, columnas):
+        tablero = []
+        for fila in range(filas):
+            tablero.append([])
+            for columna in range(columnas):
+                tablero[fila].append(ESPACIO_VACIO)
+        return tablero
 
     # como se imprime por pantalla
     def imprimir_tablero(tablero):
@@ -47,6 +53,7 @@ class tablero_del_juego():
 
     #Lugar vacio en la matriz, es decir que esa columna no esta completa
     def lugar_vacio(columna, tablero):
+        columna = 7
         indice = len(tablero) - 1
         while indice >= 0:
             if tablero[indice][columna] == ESPACIO_VACIO:
@@ -68,6 +75,7 @@ class tablero_del_juego():
 
     #Pongo la pieza
     def colocar_pieza(columna, jugador, tablero):
+        columna = 7
         color = VIOLETA
         if jugador == JUGADOR_2:
             color = AZUL

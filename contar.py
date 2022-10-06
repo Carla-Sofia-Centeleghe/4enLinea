@@ -27,7 +27,6 @@ class contar_juego():
 
     def conteo_izquierda(fila, columna, color, tablero):
         contador = 0
-        # -1 porque no es inclusivo
         for i in range(columna, -1, -1):
             if contador >= CONECTA:
                 return contador
@@ -120,10 +119,11 @@ class contar_juego():
         ]
 
     def conteo(fila, columna, color, tablero):
-        direcciones = direcciones()
+        direcciones = contar_juego.direcciones()
         for direccion in direcciones:
+            
             # funcion salva vidas, globals te deja unir por asi decirlo dos palabras.Entoces puedo usar eso para llamar a la funcion y no tener que hacer un if gigante
-            funcion = globals()['conteo_' + direccion]
+            funcion = contar_juego.conteo_ + direccion
             conteo = funcion(fila, columna, color, tablero)
             if conteo >= CONECTA:
                 return conteo
@@ -133,7 +133,7 @@ class contar_juego():
         color = tablero_del_juego.color_jugador(jugador)
         for f, fila in enumerate(tablero):
             for c, celda in enumerate(fila):
-                conteo = conteo(f, c, color, tablero)
+                conteo = contar_juego.conteo(f, c, color, tablero)
                 if conteo >= CONECTA:
                     return True
         return False

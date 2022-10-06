@@ -22,11 +22,11 @@ def main():
         if arbol_b == "2":
             break
         if arbol_b == "1":
+            filas = 8
+            columnas = 8
             while True:
-                game = tablero_del_juego()
-                tablero_base = game.crear_tablero()  # self
-
-                juego.unoVSuno(tablero_base)
+                tablero = tablero_del_juego.crear_tablero(filas, columnas)
+                juego.unoVSuno(tablero)
                 if not juego.pinta_otra():
                     break
 
