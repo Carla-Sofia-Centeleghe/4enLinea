@@ -3,7 +3,8 @@
 import random
 from tablero import tablero_del_juego
 from colorama import init, Fore, Style
-from contar import contar_juego
+#from contar import contar_juego
+from contar2 import contar_ficha
 
 init(autoreset=True)
 
@@ -31,7 +32,7 @@ class juego():
             print("Turno del " + Fore.CYAN + "jugador 2 ({AZUL})")
 
     #imprimo un ganaste al gandor
-    def ganador(jugador_actual):
+    def ganador_felicitaciones(jugador_actual):
         if jugador_actual == JUGADOR_1:
             print(Fore.MAGENTA + "Jugador 1\n" + Fore.YELLOW + "G" + Fore.GREEN + "A" + Fore.BLUE + "N" + Fore.RED +
                   "A" + Fore.CYAN + "S" + Fore.MAGENTA + "T" + Fore.WHITE + "E" + Fore.YELLOW + "!" + Fore.RED + "!")
@@ -49,10 +50,10 @@ class juego():
                 columna, jugador_actual, tablero)
             if not pieza_en_el_tablero:
                 print(Fore.RED + "¡mal! Proba otra vez")
-            ganado = contar_juego.ganador(jugador_actual, tablero)
+            ganado = contar_ficha.ganador(jugador_actual, tablero)
             if ganado:
                 tablero_del_juego.imprimir_tablero(tablero)
-                juego.ganador(jugador_actual)
+                juego.ganador_felicitaciones(jugador_actual)
                 break
             else:  # cambia los jugadores, va dando los turnos
                 if jugador_actual == JUGADOR_1:

@@ -16,8 +16,8 @@ CONECTA = 4
 
 class tablero_del_juego():
     def __init__(self):
-        self.filas = 8
-        self.columnas = 8
+        self.filas = 6
+        self.columnas = 7
 
     #defino el tamaño de la matriz
     def crear_tablero(filas, columnas):
