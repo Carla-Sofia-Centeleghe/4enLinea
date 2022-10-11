@@ -19,8 +19,8 @@ class Test4enLinea(unittest.TestCase):
 
     def test_crear_tablero(self):
         t1=tablero_del_juego()
-        self.tablero.crear_tablero(t1.filas,t1.columnas)
-        self.assertEqual(self.tablero.crear_tablero(t1.filas, t1.columnas), [
+        self.tablero.crear_tablero(t1.filas)
+        self.assertEqual(self.tablero.crear_tablero(t1.filas), [
             [" ", " ", " ", " ", " ", " ", " ", " "],
             [" ", " ", " ", " ", " ", " ", " ", " "],
             [" ", " ", " ", " ", " ", " ", " ", " "],

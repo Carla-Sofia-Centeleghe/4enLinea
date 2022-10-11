@@ -21,7 +21,7 @@ class tablero_del_juego():
         self.tablero=[]
 
     #defino el tamaño de la matriz
-    def crear_tablero(self,filas, columnas):
+    def crear_tablero(self,filas):
         tablero = []
         for fila in range(filas):
             tablero.append([])
