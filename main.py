@@ -7,7 +7,7 @@ from colorama import init, Fore, Style
 from contar2 import contar_ficha
 
 
-init(autoreset=True)
+init()
 
 
 def main():
@@ -31,6 +31,5 @@ def main():
                 juego.unoVSuno(tablero)
                 if not juego.pinta_otra():
                     break
-
 
 main()

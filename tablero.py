@@ -16,7 +16,7 @@ CONECTA = 4
 
 class tablero_del_juego():
     def __init__(self):
-        self.filas = 8
+        self.filas = 7
         self.columnas = 9
         self.tablero=[]
 
@@ -49,7 +49,7 @@ class tablero_del_juego():
             print("")
     # Final
         print("+", end="")
-        for f in range(1, len(tablero) + 1):
+        for f in range(1, len(tablero)):
             print("-", end="+")
         print("")
 
@@ -70,9 +70,9 @@ class tablero_del_juego():
         ficha_ingresada: int = input("Ingresa la columna para colocar la pieza: ")
 
     #Si esta llena o si existe el lugar y para pedir que coloque la ficha
-    def columna_valida(self, tablero):
+    def columna_valida(self,tablero):
         while True:
-            columna = tablero_del_juego.fichas
+            columna = tablero_del_juego.fichas(ficha_ingresada=int)
             # si columna es mas grande que mi matrix salta error
             if columna <= 0 or columna > len(tablero[0]):
                 print("Columna no válida")

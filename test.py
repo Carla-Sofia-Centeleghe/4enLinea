@@ -28,7 +28,7 @@ class Test4enLinea(unittest.TestCase):
             [" ", " ", " ", " ", " ", " ", " ", " "],
             [" ", " ", " ", " ", " ", " ", " ", " "],
             [" ", " ", " ", " ", " ", " ", " ", " "],
-            [" ", " ", " ", " ", " ", " ", " ", " "]
+
         ])
 
    # def test_imprimir_tablero(self):
