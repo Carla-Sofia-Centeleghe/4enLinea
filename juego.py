@@ -23,14 +23,14 @@ class juego():
         return random.choice([JUGADOR_1, JUGADOR_2])
 
     #turnos y colores
-    def turnos_colores(self, turno, tablero):
+    def turnos_colores(turno, tablero):
         print(Fore.MAGENTA +
               "Jugador 1: {VIOLETA} " + Fore.CYAN + "| Jugador 2: {AZUL}")
         if turno == JUGADOR_1:
             print("Juega el " + Fore.MAGENTA + "jugador 1 ({VIOLETA})")
         else:
             print("Juega el " + Fore.CYAN + "jugador 2 ({AZUL})")
-        return tablero_del_juego.columna_valida(self, tablero)
+        return tablero_del_juego.columna_valida(tablero)
 
     #imprimo un ganaste al gandor
     def ganador_felicitaciones(jugador_actual):
@@ -42,15 +42,15 @@ class juego():
                   "A" + Fore.CYAN + "S" + Fore.MAGENTA + "T" + Fore.WHITE + "E" + Fore.YELLOW + "!" + Fore.RED + "!")
 
     #mando a imorimir por terminal la ebolucion del tablero y el truno de la persona que toca
-    def unoVSuno(self, tablero):
+    def unoVSuno(tablero):
         jugador_actual = juego.elegir_jugador()
         while True:
             tablero_del_juego.imprimir_tablero(tablero)
 
-            columna_turno: int = juego.turnos_colores(self,jugador_actual, tablero)
+            columna_turno: int = juego.turnos_colores(jugador_actual, tablero)
 
             pieza_en_el_tablero = tablero_del_juego.colocar_pieza(columna_turno,jugador_actual, tablero)
-            
+
             if not pieza_en_el_tablero:
                 print(Fore.RED + "¡mal! Proba otra vez")
 
