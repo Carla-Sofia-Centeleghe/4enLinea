@@ -50,6 +50,7 @@ class juego():
             columna_turno: int = juego.turnos_colores(self,jugador_actual, tablero)
 
             pieza_en_el_tablero = tablero_del_juego.colocar_pieza(columna_turno,jugador_actual, tablero)
+            
             if not pieza_en_el_tablero:
                 print(Fore.RED + "¡mal! Proba otra vez")
 
