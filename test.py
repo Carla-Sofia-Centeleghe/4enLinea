@@ -4,7 +4,7 @@ from msilib.schema import Patch
 import unittest
 
 from tablero import tablero_del_juego
-from contar import contar_juego
+#from contar import contar_juego
 from juego import juego
 from colorama import init, Fore, Style
 
@@ -18,18 +18,25 @@ class Test4enLinea(unittest.TestCase):
         self.tablero = tablero_del_juego()
 
     def test_crear_tablero(self):
-        self.tablero.crear_tablero()
-        self.assertEqual(self.tablero.tablero, [
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0]
+        t1=tablero_del_juego()
+        self.tablero.crear_tablero(t1.filas,t1.columnas)
+        self.assertEqual(self.tablero.crear_tablero(t1.filas, t1.columnas), [
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0]
         ])
 
     def test_imprimir_tablero(self):
-        pass
+        t1=tablero_del_juego()
+        self.tablero.imprimir_tablero(t1.tablero)
+        self.assertEqual(self.tablero.imprimir_tablero(t1.tablero),[ 
+            
+        ])
 
     #def test_lugar_vacio(self, indice, columna):
     #    self.tablero.crear_tablero()

@@ -11,6 +11,8 @@ init(autoreset=True)
 
 
 def main():
+    t1 = tablero_del_juego()
+
     while True:
         print(Fore.YELLOW + "4" + " " + Fore.GREEN + "E" + Fore.BLUE + "N" + " " + Fore.RED +
               "L" + Fore.CYAN + "i" + Fore.MAGENTA + "N" + Fore.WHITE + "E" + Fore.YELLOW + "A\n")
@@ -24,10 +26,8 @@ def main():
         if arbol_b == "2":
             break
         if arbol_b == "1":
-            filas = 8
-            columnas = 8
             while True:
-                tablero = tablero_del_juego.crear_tablero(filas, columnas)
+                tablero = tablero_del_juego.crear_tablero(t1.filas,t1.columnas,t1.tablero)
                 juego.unoVSuno(tablero)
                 if not juego.pinta_otra():
                     break

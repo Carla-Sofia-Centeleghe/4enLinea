@@ -6,7 +6,7 @@ from colorama import init, Fore, Style
 init(autoreset=True)
 
 # Declavo algunas variables utiles
-ESPACIO_VACIO = " "
+ESPACIO_VACIO = 0
 VIOLETA = "x"
 AZUL = "o"
 JUGADOR_1 = 1
@@ -16,11 +16,12 @@ CONECTA = 4
 
 class tablero_del_juego():
     def __init__(self):
-        self.filas = 6
-        self.columnas = 7
+        self.filas = 8
+        self.columnas = 8
+        self.tablero=[]
 
     #defino el tamaño de la matriz
-    def crear_tablero(filas, columnas):
+    def crear_tablero(self,filas, columnas):
         tablero = []
         for fila in range(filas):
             tablero.append([])
@@ -29,7 +30,7 @@ class tablero_del_juego():
         return tablero
 
     # como se imprime por pantalla
-    def imprimir_tablero(tablero):
+    def imprimir_tablero(self,tablero):
         print("|", end="")
         for f in range(1, len(tablero[0]) + 1):
             print(f, end="|")
