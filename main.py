@@ -26,8 +26,10 @@ def main():
         if arbol_b == "2":
             break
         if arbol_b == "1":
+            filas: int = 8
+            columnas : int = 9
             while True:
-                tablero = tablero_del_juego.crear_tablero(t1.filas,t1.columnas,t1.tablero)
+                tablero = tablero_del_juego.crear_tablero(filas,columnas)
                 juego.unoVSuno(tablero)
                 if not juego.pinta_otra():
                     break

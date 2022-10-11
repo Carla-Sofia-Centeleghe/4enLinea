@@ -6,7 +6,7 @@ from colorama import init, Fore, Style
 init(autoreset=True)
 
 # Declavo algunas variables utiles
-ESPACIO_VACIO = 0
+ESPACIO_VACIO = " "
 VIOLETA = "x"
 AZUL = "o"
 JUGADOR_1 = 1
@@ -17,7 +17,7 @@ CONECTA = 4
 class tablero_del_juego():
     def __init__(self):
         self.filas = 8
-        self.columnas = 8
+        self.columnas = 9
         self.tablero=[]
 
     #defino el tamaño de la matriz
@@ -25,14 +25,15 @@ class tablero_del_juego():
         tablero = []
         for fila in range(filas):
             tablero.append([])
-            for columna in range(columnas):
+            for columna in range(8):
                 tablero[fila].append(ESPACIO_VACIO)
         return tablero
 
     # como se imprime por pantalla
-    def imprimir_tablero(self,tablero):
+    def imprimir_tablero(tablero):
         print("|", end="")
-        for f in range(1, len(tablero[0]) + 1):
+        for f in range(1, len(tablero)):
+
             print(f, end="|")
         print("")
     # Colores
@@ -52,9 +53,10 @@ class tablero_del_juego():
             print("-", end="+")
         print("")
 
+
     #Lugar vacio en la matriz, es decir que esa columna no esta completa
-    def lugar_vacio(columna, tablero):
-        columna = 7
+    def lugar_vacio(self, columna, tablero):
+        #columna = 8
         indice = len(tablero) - 1
         while indice >= 0:
             if tablero[indice][columna] == ESPACIO_VACIO:
@@ -62,10 +64,15 @@ class tablero_del_juego():
             indice -= 1
         return -1
 
-    #Si esta llena o si existe el lugar
-    def columna_valida(tablero):
+
+    #Input para las fichas
+    def fichas(ficha_ingresada):
+        ficha_ingresada: int = input("Ingresa la columna para colocar la pieza: ")
+
+    #Si esta llena o si existe el lugar y para pedir que coloque la ficha
+    def columna_valida(self, tablero):
         while True:
-            columna = input("Ingresa la columna para colocar la pieza: ")
+            columna = tablero_del_juego.fichas
             # si columna es mas grande que mi matrix salta error
             if columna <= 0 or columna > len(tablero[0]):
                 print("Columna no válida")
@@ -75,14 +82,17 @@ class tablero_del_juego():
                 return columna - 1
 
     #Pongo la pieza
-    def colocar_pieza(columna, jugador, tablero):
-        columna = 7
+    def colocar_pieza(self, columna, jugador_actual, tablero):
+       
+        #columna = 8
+        #columna =  tablero_del_juego.columna_valida()
         color = VIOLETA
-        if jugador == JUGADOR_2:
+        if jugador_actual == JUGADOR_2:
             color = AZUL
         fila = tablero_del_juego.lugar_vacio(columna, tablero)
         if fila == -1:
             return False
+        #coloco la fihca    
         tablero[fila][columna] = color
         return True
 

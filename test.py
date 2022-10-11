@@ -21,22 +21,22 @@ class Test4enLinea(unittest.TestCase):
         t1=tablero_del_juego()
         self.tablero.crear_tablero(t1.filas,t1.columnas)
         self.assertEqual(self.tablero.crear_tablero(t1.filas, t1.columnas), [
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0]
+            [" ", " ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " ", " "]
         ])
 
-    def test_imprimir_tablero(self):
-        t1=tablero_del_juego()
-        self.tablero.imprimir_tablero(t1.tablero)
-        self.assertEqual(self.tablero.imprimir_tablero(t1.tablero),[ 
+   # def test_imprimir_tablero(self):
+    #    t1=tablero_del_juego()
+    #    self.tablero.imprimir_tablero(t1.tablero)
+    #    self.assertEqual(self.tablero.imprimir_tablero(t1.tablero),[ 
             
-        ])
+    #    ])
 
     #def test_lugar_vacio(self, indice, columna):
     #    self.tablero.crear_tablero()
