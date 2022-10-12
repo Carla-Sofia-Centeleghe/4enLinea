@@ -54,9 +54,9 @@ class juego():
             if not pieza_en_el_tablero:
                 print(Fore.RED + "¡mal! Proba otra vez")
 
-            ganado = contar_ficha.ganador(jugador_actual, tablero)
+            ganador = contar_ficha.ganador(jugador_actual, tablero)
 
-            if ganado:
+            if ganador:
                 tablero_del_juego.imprimir_tablero(tablero)
                 juego.ganador_felicitaciones(jugador_actual)
                 break

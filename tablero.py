@@ -55,7 +55,7 @@ class tablero_del_juego():
 
 
     #Lugar vacio en la matriz, es decir que esa columna no esta completa
-    def lugar_vacio(self, columna, tablero):
+    def lugar_vacio(columna, tablero):
         #columna = 8
         indice = len(tablero) - 1
         while indice >= 0:
@@ -66,13 +66,16 @@ class tablero_del_juego():
 
 
     #Input para las fichas
-    def fichas(ficha_ingresada):
-        ficha_ingresada: int = input("Ingresa la columna para colocar la pieza: ")
+    #def fichas(ficha_ingresada):
+    #    ficha_ingresada: int = input("Ingresa la columna para colocar la pieza: ")
 
     #Si esta llena o si existe el lugar y para pedir que coloque la ficha
-    def columna_valida(self,tablero):
+    def columna_valida(tablero):
         while True:
-            columna = tablero_del_juego.fichas(ficha_ingresada=int)
+            columna = int(input("Ingresa la columna para colocar la pieza: "))
+
+            #tablero_del_juego.fichas(ficha_ingresada=int)
+
             # si columna es mas grande que mi matrix salta error
             if columna <= 0 or columna > len(tablero[0]):
                 print("Columna no válida")
@@ -82,7 +85,7 @@ class tablero_del_juego():
                 return columna - 1
 
     #Pongo la pieza
-    def colocar_pieza(self, columna, jugador_actual, tablero):
+    def colocar_pieza(columna, jugador_actual, tablero):
        
         #columna = 8
         #columna =  tablero_del_juego.columna_valida()

@@ -1,10 +1,9 @@
 # Main, aca llamas a todos
 
-from tablero import tablero_del_juego
-#from contar import contar_juego
-from juego import juego
+from tablero import *
+from juego import *
 from colorama import init, Fore, Style
-from contar2 import contar_ficha
+from contar2 import *
 
 
 init()

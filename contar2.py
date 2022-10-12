@@ -1,5 +1,6 @@
 # Otra opcio para contar quien gana
 
+from xmlrpc.client import boolean
 import numpy as np
 from tablero import tablero_del_juego
 from colorama import init, Fore, Style
@@ -13,7 +14,7 @@ JUGADOR_2 = 2
 CONECTA = 4
 
 class contar_ficha():
-    def gandor(self,booleano,cadena):
+    def ganador(self,booleano = boolean):
         #comprobar las filas
         for fila in booleano:
             #if si hay por lo menos 4
@@ -34,5 +35,5 @@ class contar_ficha():
             if sum(np.rot90(booleano, k)) >= 4:
                 if sum(np.rot90(booleano, k)[4]) >= 4 or sum(np.rot90(booleano, k)[::-1][:4]):
                     return True
-
+        return False, ' '
 
