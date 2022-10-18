@@ -47,7 +47,7 @@ class Tablero:
             if self.tablero[i+1][possicion] == " ":
                 self.tablero[i+1][possicion] = ficha
                 break
-
+        
     # Como se imprime por pantalla
     def imprimir_tablero(self):
         print("|", end="")

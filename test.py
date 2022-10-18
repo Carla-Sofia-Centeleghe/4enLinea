@@ -59,8 +59,7 @@ class Test4enLinea(unittest.TestCase):
         juego.ingresar_ficha(1, 'x')
         juego.ingresar_ficha(2, 'x')
         juego.ingresar_ficha(3, 'x')
-        self.assertTrue(Jugador.definir_ganador_cotar_fichas(
-            self, 'x', juego.tablero))
+        self.assertTrue(Jugador.definir_ganador_cotar_fichas(self, 'x', juego.tablero))
 
     def test_ganador_vertical_x_10(self):
         juego = Tablero()
@@ -70,8 +69,7 @@ class Test4enLinea(unittest.TestCase):
         juego.ingresar_ficha(0, 'x')
         juego.ingresar_ficha(0, 'x')
         # aca lo hice al revez, porque el que gana es x, y entonces si digo que gana O... daria falso
-        self.assertFalse(Jugador.definir_ganador_cotar_fichas(
-            self, 'o', juego.tablero))
+        self.assertFalse(Jugador.definir_ganador_cotar_fichas(self, 'o', juego.tablero))
 
     def test_diagonal_x_11(self):
         juego = Tablero()
@@ -86,8 +84,7 @@ class Test4enLinea(unittest.TestCase):
         juego.ingresar_ficha(6, 'x')
         for i in range(len(p_fila_3)):
             juego.ingresar_ficha(i+1, 'x')
-        self.assertTrue(Jugador.definir_ganador_cotar_fichas(
-            self, 'x', juego.tablero))
+        self.assertTrue(Jugador.definir_ganador_cotar_fichas(self, 'x', juego.tablero))
 
     def test_diagonal_x_12(self):
         juego = Tablero()
@@ -102,11 +99,9 @@ class Test4enLinea(unittest.TestCase):
         juego.ingresar_ficha(1, 'o')
         for i in range(len(p_fila_2)):
             juego.ingresar_ficha(i+1, 'x')
-        self.assertTrue(Jugador.definir_ganador_cotar_fichas(
-            self, 'x', juego.tablero))
+        self.assertTrue(Jugador.definir_ganador_cotar_fichas(self, 'x', juego.tablero))
 
     # Test para probar la condicion de ganar, es decir quien gana, jugador O
-
     def test_ganador_horizontal_o_13(self):
         juego = Tablero()
         juego.crear_tablero()
@@ -115,8 +110,7 @@ class Test4enLinea(unittest.TestCase):
         juego.ingresar_ficha(2, 'o')
         juego.ingresar_ficha(3, 'o')
         # aca lo hice al revez, porque el que gana es O, y entonces si digo que gana x... daria falso
-        self.assertFalse(Jugador.definir_ganador_cotar_fichas(
-            self, 'x', juego.tablero))
+        self.assertFalse(Jugador.definir_ganador_cotar_fichas(self, 'x', juego.tablero))
 
     def test_ganador_vertical_o_14(self):
         juego = Tablero()
@@ -125,8 +119,7 @@ class Test4enLinea(unittest.TestCase):
         juego.ingresar_ficha(0, 'o')
         juego.ingresar_ficha(0, 'o')
         juego.ingresar_ficha(0, 'o')
-        self.assertTrue(Jugador.definir_ganador_cotar_fichas(
-            self, 'o', juego.tablero))
+        self.assertTrue(Jugador.definir_ganador_cotar_fichas(self, 'o', juego.tablero))
 
     def test_diagonal_o_15(self):
         juego = Tablero()
@@ -141,8 +134,7 @@ class Test4enLinea(unittest.TestCase):
         juego.ingresar_ficha(6, 'o')
         for i in range(len(p_fila_3)):
             juego.ingresar_ficha(i+1, 'o')
-        self.assertTrue(Jugador.definir_ganador_cotar_fichas(
-            self, 'o', juego.tablero))
+        self.assertTrue(Jugador.definir_ganador_cotar_fichas(self, 'o', juego.tablero))
 
     def test_diagonal_o_16(self):
         juego = Tablero()
@@ -157,8 +149,7 @@ class Test4enLinea(unittest.TestCase):
         juego.ingresar_ficha(1, 'x')
         for i in range(len(p_fila_2)):
             juego.ingresar_ficha(i+1, 'o')
-        self.assertTrue(Jugador.definir_ganador_cotar_fichas(
-            self, 'o', juego.tablero))
+        self.assertTrue(Jugador.definir_ganador_cotar_fichas(self, 'o', juego.tablero))
 
     # Test para ver si ingresa la ficha en el tablero
     def test_ingresar_ficha_x_17(self):
@@ -182,7 +173,7 @@ class Test4enLinea(unittest.TestCase):
         juego.crear_tablero()
         juego.ingresar_ficha(1, 'o')
         # hago esto porque se que en la columna 1, fila 5 esta vacia. Entoces va a ser difernte de 'O', ya que solo llene la fila 7 y columna 1. Recordemos que en mi matriz recoremos desde abajo, porq en un juego las cosas caen por la gravedad
-        self.assertNotEqual(juego.tablero[5][1], '0')
+        self.assertNotEqual(juego.tablero[5][1], 'o')
 
     def test_ingresar_ficha_o_20(self):
         juego = Tablero()
@@ -205,7 +196,7 @@ class Test4enLinea(unittest.TestCase):
         juego.ingresar_ficha(5, 'o')
         juego.ingresar_ficha(5, 'o')
         juego.ingresar_ficha(5, 'o')
-        # juego.ingresar_ficha(5, 'o')
+        #juego.ingresar_ficha(5, 'o')
         self.assertTrue(juego.ingresar_ficha(5, 'o'))
 
     def test_columna_llena_x_22(self):
@@ -218,7 +209,7 @@ class Test4enLinea(unittest.TestCase):
         juego.ingresar_ficha(6, 'x')
         juego.ingresar_ficha(6, 'x')
         juego.ingresar_ficha(6, 'x')
-        # juego.ingresar_ficha(6, 'o')
+        #juego.ingresar_ficha(6, 'o')
         self.assertTrue(juego.ingresar_ficha(6, 'x'))
 
 if __name__ == "__main__":
