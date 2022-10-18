@@ -4,9 +4,7 @@
 import unittest
 import unittest.mock
 
-#from menu import Menu
-from linea import Tablero
-from linea import Jugador
+from linea import *
 
 class Test4enLinea(unittest.TestCase):
     # Test para el funcionamiento la creacion del tablero
@@ -222,12 +220,6 @@ class Test4enLinea(unittest.TestCase):
         juego.ingresar_ficha(6, 'x')
         # juego.ingresar_ficha(6, 'o')
         self.assertTrue(juego.ingresar_ficha(6, 'x'))
-
-    # Test de como imprime en pantalla / NO FUNCIONA
-    # def test_iprimir_tablero(self):
-    #     tablero = Tablero
-    #     self.assertTrue(tablero.imprimir_tablero(self))
-
 
 if __name__ == "__main__":
     unittest.main()
