@@ -1,9 +1,10 @@
 # Tablero del Tablero
+# Juego del JUGADOR
+# Menu, es donde se efecutan las funciones y hace juncionar al juego
 # Carla S. Centeleghe
 
 
 from colorama import init, Fore, Style
-from juego import *
 
 # Uso esta linea para que me funcione colorama y se vuleva a su color orginal luego
 init(autoreset=True)
@@ -15,8 +16,6 @@ JUGADOR_1 = 1
 JUGADOR_2 = 2
 
 # Clase donde estan casi todas mis funciones
-
-
 class Tablero:
 
     def __init__(self):
@@ -122,3 +121,88 @@ class Tablero:
             return True
         elif eleccion == "N":
             return True
+
+# Clase jugador, estan las funciones para las fichas y para ver quien gana
+class Jugador:
+    nrojugador = 0
+
+    def __init__(self, ficha=None):
+        Jugador.nrojugador += 1
+        self.ficha = None
+
+    # Defino los colores/fichas de los jugadores, los colores y fichas estan asociados porque printeo en color
+    def color_jugador(self):
+        if self.nrojugador == 1:
+            self.ficha = "x"
+        if self.nrojugador == 2:
+            self.ficha = "o"
+
+        return self.ficha
+
+    # Contar las fichas, para ver la comdicion de ganar
+    def definir_ganador_cotar_fichas(self, ficha, tablero):
+        # Cuento las fihcas verticalmente
+        for possicion in range(8):
+            for i in range(5):
+                if tablero[i][possicion] == ficha and tablero[i+1][possicion] == ficha and tablero[i+2][possicion] == ficha and tablero[i+3][possicion] == ficha:
+                    return True
+
+        # Cuento las fichas horizontalmente
+        for posicion in range(5):
+            for i in range(8):
+                if tablero[i][posicion] == ficha and tablero[i][posicion+1] == ficha and tablero[i][posicion+2] == ficha and tablero[i][posicion+3] == ficha:
+                    return True
+
+        # Cuento las fichas diagonalmente positivo
+        for possicion in range(5):
+            for i in range(5):
+                if tablero[i][possicion] == ficha and tablero[i+1][possicion+1] == ficha and tablero[i+2][possicion+2] == ficha and tablero[i+3][possicion+3] == ficha:
+                    return True
+
+        # Cuento las diagonales negativo
+        for possicion in range(5):
+            for i in range(3, 8):
+                if tablero[i][possicion] == ficha and tablero[i-1][possicion+1] == ficha and tablero[i-2][possicion+2] == ficha and tablero[i-3][possicion+3] == ficha:
+                    return False
+        return False
+
+# Clase principal, que hace funcionar el programa
+class Menu:
+    def __init__(self) -> None:
+        pass
+    # Funcion que comienza a correr el juego
+
+    def menu():
+        while True:
+            # Imprimo por pantalla (con colorcito) el nombre del juego
+            print(Fore.YELLOW + "4" + " " + Fore.GREEN + "E" + Fore.BLUE + "N" + " " + Fore.RED +
+                  "L" + Fore.CYAN + "i" + Fore.MAGENTA + "N" + Fore.WHITE + "E" + Fore.YELLOW + "A\n")
+
+            # Imprimo por pantalla un indice de opciones
+            arbol_b = input("1- UNO vs UNO"
+                            "\n"
+                            "2- Salir"
+                            "\n"
+                            "Elige: ")
+            if arbol_b == "2":
+                break
+            if arbol_b == "1":
+                # Empieza a ejecutar y llamar junciones
+                while True:
+                    tablero = Tablero()
+                    tablero.crear_tablero()  # Creo el tablero
+
+                    j1 = Jugador()
+                    j1.color_jugador()
+
+                    j2 = Jugador()
+                    j2.color_jugador()
+                    tablero.unoVSuno(j1, j2)
+
+                    tablero.pinta_otra()  # Revancha, vuelve a ejecutarel prograa
+                    return True
+            break
+
+
+if __name__ == "__main__":
+    Menu.menu()

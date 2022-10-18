@@ -4,10 +4,9 @@
 import unittest
 import unittest.mock
 
-from juego import Jugador
-from tablero import Tablero
 #from menu import Menu
-
+from linea import Tablero
+from linea import Jugador
 
 class Test4enLinea(unittest.TestCase):
     # Test para el funcionamiento la creacion del tablero
@@ -23,7 +22,7 @@ class Test4enLinea(unittest.TestCase):
             self.assertEqual(len(tablero.tablero[x]), 8)
 
     # Test para ver si puedo ingresar los input
-    @unittest.mock.patch('tablero.Tablero.pido_ficha', return_value=3)
+    @unittest.mock.patch('linea.Tablero.pido_ficha', return_value=3)
     def test_pido_ficha_3(self, name):
         possicion = Tablero.pido_ficha()
         self.assertEqual(possicion, 3)
@@ -33,12 +32,12 @@ class Test4enLinea(unittest.TestCase):
         print("Test: test_print_4")
 
     #Test para ver si puedo jugar otra
-    @unittest.mock.patch('tablero.Tablero.pinta_otra', return_value="S")
+    @unittest.mock.patch('linea.Tablero.pinta_otra', return_value="S")
     def test_pinta_otra_5(self, name):
         eleccion = Tablero.pinta_otra()
         self.assertTrue(eleccion)
 
-    @unittest.mock.patch('tablero.Tablero.pinta_otra', return_value="N")
+    @unittest.mock.patch('linea.Tablero.pinta_otra', return_value="N")
     def test_pinta_otra_6(self, name):
         eleccion = Tablero.pinta_otra()
         self.assertTrue(eleccion)
