@@ -1,76 +1,54 @@
-#detalles del juego
+# Juego del JUGADOR
+# Carla S. Centeleghe
 
-import random
-from tablero import tablero_del_juego
-from colorama import init, Fore, Style
-#from contar import contar_juego
-from contar2 import contar_ficha
-
-init(autoreset=True)
+from tablero import Tablero
 
 # Declavo algunas variables utiles
-ESPACIO_VACIO = " "
-VIOLETA = "x"
-AZUL = "o"
 JUGADOR_1 = 1
 JUGADOR_2 = 2
-CONECTA = 4
+
+# Clase jugador, estan las funciones para las fichas y para ver quien gana
 
 
-class juego():
-    #elige el jugador que va a empezar el juego, es al azar. Porq uso una libreria para ello
-    def elegir_jugador():
-        return random.choice([JUGADOR_1, JUGADOR_2])
+class Jugador:
+    nrojugador = 0
 
-    #turnos y colores
-    def turnos_colores(turno, tablero):
-        print(Fore.MAGENTA +
-              "Jugador 1: {VIOLETA} " + Fore.CYAN + "| Jugador 2: {AZUL}")
-        if turno == JUGADOR_1:
-            print("Juega el " + Fore.MAGENTA + "jugador 1 ({VIOLETA})")
-        else:
-            print("Juega el " + Fore.CYAN + "jugador 2 ({AZUL})")
-        return tablero_del_juego.columna_valida(tablero)
+    def __init__(self, ficha=None):
+        Jugador.nrojugador += 1
+        self.ficha = None
 
-    #imprimo un ganaste al gandor
-    def ganador_felicitaciones(jugador_actual):
-        if jugador_actual == JUGADOR_1:
-            print(Fore.MAGENTA + "Jugador 1\n" + Fore.YELLOW + "G" + Fore.GREEN + "A" + Fore.BLUE + "N" + Fore.RED +
-                  "A" + Fore.CYAN + "S" + Fore.MAGENTA + "T" + Fore.WHITE + "E" + Fore.YELLOW + "!" + Fore.RED + "!")
-        else:
-            print(Fore.CYAN + "Jugador 2\n" + Fore.YELLOW + "G" + Fore.GREEN + "A" + Fore.BLUE + "N" + Fore.RED +
-                  "A" + Fore.CYAN + "S" + Fore.MAGENTA + "T" + Fore.WHITE + "E" + Fore.YELLOW + "!" + Fore.RED + "!")
+    # Defino los colores/fichas de los jugadores, los colores y fichas estan asociados porque printeo en color
+    def color_jugador(self):
+        if self.nrojugador == 1:
+            self.ficha = "x"
+        if self.nrojugador == 2:
+            self.ficha = "o"
 
-    #mando a imorimir por terminal la ebolucion del tablero y el truno de la persona que toca
-    def unoVSuno(tablero):
-        jugador_actual = juego.elegir_jugador()
-        while True:
-            tablero_del_juego.imprimir_tablero(tablero)
+        return self.ficha
 
-            columna_turno: int = juego.turnos_colores(jugador_actual, tablero)
+    # Contar las fichas, para ver la comdicion de ganar
+    def definir_ganador_cotar_fichas(self, ficha, tablero):
+        # Cuento las fihcas verticalmente
+        for possicion in range(8):
+            for i in range(5):
+                if tablero[i][possicion] == ficha and tablero[i+1][possicion] == ficha and tablero[i+2][possicion] == ficha and tablero[i+3][possicion] == ficha:
+                    return True
 
-            pieza_en_el_tablero = tablero_del_juego.colocar_pieza(columna_turno,jugador_actual, tablero)
+        # Cuento las fichas horizontalmente
+        for posicion in range(5):
+            for i in range(8):
+                if tablero[i][posicion] == ficha and tablero[i][posicion+1] == ficha and tablero[i][posicion+2] == ficha and tablero[i][posicion+3] == ficha:
+                    return True
 
-            if not pieza_en_el_tablero:
-                print(Fore.RED + "¡mal! Proba otra vez")
+        # Cuento las fichas diagonalmente positivo
+        for possicion in range(5):
+            for i in range(5):
+                if tablero[i][possicion] == ficha and tablero[i+1][possicion+1] == ficha and tablero[i+2][possicion+2] == ficha and tablero[i+3][possicion+3] == ficha:
+                    return True
 
-            ganador = contar_ficha.ganador(jugador_actual, tablero)
-
-            if ganador:
-                tablero_del_juego.imprimir_tablero(tablero)
-                juego.ganador_felicitaciones(jugador_actual)
-                break
-            else:  # cambia los jugadores, va dando los turnos
-                if jugador_actual == JUGADOR_1:
-                    jugador_actual = JUGADOR_2
-                else:
-                    jugador_actual = JUGADOR_1
-
-    #otra partida boucle
-    def pinta_otra():
-        while True:
-            eleccion = input("¿Revancha? [S/N] ")()
-            if eleccion == "S":
-                return True
-            elif eleccion == "N":
-                return False
+        # Cuento las diagonales negativo
+        for possicion in range(5):
+            for i in range(3, 8):
+                if tablero[i][possicion] == ficha and tablero[i-1][possicion+1] == ficha and tablero[i-2][possicion+2] == ficha and tablero[i-3][possicion+3] == ficha:
+                    return False
+        return False
