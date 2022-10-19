@@ -36,6 +36,10 @@ class Tablero:
     # Este metodo tirar las fichas y revisa que no este llena la columna
     def ingresar_ficha(self, possicion, ficha):
         c = 0
+        # Entonces si columna esta llena devuelve true, caso contrario false
+        if self.tablero[0][possicion] == " " and self.tablero[1][possicion] != " ":
+            self.tablero[0][possicion] = ficha
+            return True
         for i in reversed(range(self.columna)):
             if self.tablero[1][possicion] != " ":
                 c = c+1
@@ -43,10 +47,10 @@ class Tablero:
                       Fore.BLUE + "Intenta en otra columna\n")
                 if c == 1:
                     return True
-                break
+                return False
             if self.tablero[i+1][possicion] == " ":
                 self.tablero[i+1][possicion] = ficha
-                break
+                return False
         
     # Como se imprime por pantalla
     def imprimir_tablero(self):

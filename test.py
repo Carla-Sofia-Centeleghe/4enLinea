@@ -196,7 +196,7 @@ class Test4enLinea(unittest.TestCase):
         juego.ingresar_ficha(5, 'o')
         juego.ingresar_ficha(5, 'o')
         juego.ingresar_ficha(5, 'o')
-        #juego.ingresar_ficha(5, 'o')
+        juego.ingresar_ficha(5, 'o')
         self.assertTrue(juego.ingresar_ficha(5, 'o'))
 
     def test_columna_llena_x_22(self):
@@ -209,7 +209,7 @@ class Test4enLinea(unittest.TestCase):
         juego.ingresar_ficha(6, 'x')
         juego.ingresar_ficha(6, 'x')
         juego.ingresar_ficha(6, 'x')
-        #juego.ingresar_ficha(6, 'o')
+        juego.ingresar_ficha(6, 'o')
         self.assertTrue(juego.ingresar_ficha(6, 'x'))
 
 if __name__ == "__main__":
